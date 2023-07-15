@@ -140,4 +140,51 @@ Arrays and Vectors
     Space Complexity : O(n)
 
 18. Rainwater Trapping
-    
+    First calculate the maximum till now left heights and store the values inside an array. Similarly calculate maximum
+    till now right heights and store them inside an array. Now for each element do min(left, right) - curr_height to get
+    the amount of water stored inside the current index. Add them all up and you will have the total water.
+
+    Time Complexity : O(n)
+    Space Complexity : O(n)
+
+19. Subarray Sort
+    First find the smallest and largest element which are out of order inside the array. Now traverse the array from
+    left to right and find the index of element which is greater than the smallest element we found. Similarly traverse
+    the array from right to left and find the index of element which is smaller than the largest element we found. These 
+    2 indices denote the size of unsorted array that needs to be sorted in order for entire array to be sorted.
+
+    Time Complexity : O(n)
+    Space Complexity : O(n)
+
+20. Minimum Swaps
+    First create a copy of the array along with its indices in a new pair vector. Now sort this new vector. Now traverse 
+    the array and maintain a visited array. If the element is already visited or is in its correct position skip that element.
+    Otherwise start a cycle from that index and keep going to the index marked by the second element inside the pair vector
+    and keep marking all indices as visited. Keep doing this until you reach the element which is visited. Add steps - 1
+    to the total swaps variable you did for this entire routine. Return the total swaps at the end of the program.
+
+    Time Complexity : O(logn) (Because of sorting)
+    Space Complexity : O(n)
+
+21. Minimum Difference
+    First sort both the arrays. Now keep 2 pointers, one at the beginning of each array. Now keep calculating minimum difference.
+    If the element in the first array is smaller increase the index of first array, if index in second array is smaller
+    increase the index of second array. Keep calculating minimum difference at every step. Write a routine like the merge function.
+
+    Time Complexity : O(n + m)
+    Space Complexity : O(n)
+
+22. Product of Array Except Self
+    Create an array and calculate the prefix products for each element. Now keep a product variable initialized to 1 and
+    start traversing the array in backwards direction and for every element in the new array mark current index as product
+    of product variable and one perevious element in prefix array. Now mark product as product times current element inside
+    the original array.
+
+    Time Complexity : O(n)
+    Space Complexity : O(n)
+
+23. Min Arrows to burst Balloons (Busy Life)
+    First sort the pair array according to the second coordinate in each points. Now save the first interval's end and traverse
+    the array from the first index. Now if current start element is smaller than or equal to the previous ending element
+    do nothing because all those balloon are overlapping and can be burst with one arrow only, otherwise increase the number 
+    of arrows required by one. Return the total arrows required at the end of program.
