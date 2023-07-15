@@ -1,0 +1,143 @@
+Arrays and Vectors
+
+1. Linear Search
+    Simply run a for loop on an array, if the current element matches the target return that index. If the loop ends
+    return -1 indicating that the element was not found.'
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+2. Binary Search
+    Keep 2 pointers lo and hi with lo at 0 and hi at the last index of the array. Now find a mid point using (lo+hi)/2.
+    Check if the target element is equal to the element at the mid index. If so, return the mid index. If not, check 
+    whether the target element is smaller than the mid element or larger. If smaller, search in the left search space by
+    reducing the search space by doing hi = mid - 1. If larger, search in the right search space by reducing the search
+    space by doing lo = mid + 1. Repeat the algorithm until search space reduces to 0. If the element is not found return ]
+    -1.
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+3. Array Reverse
+    Swap every element from the start to the mid of the array with its corresponding element beginning from the end.
+    0 with last element, 1 with second last element and so on till the middle of the array.
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+4. Print Subarrays
+    Keep two pointers i and j which traverse the array inside a double for loop. Now print all the elements between i
+    and j essentailly printing all the subarrays.
+    Time Complexity : O(n^3)
+    Space Complexity : O(1)
+
+5. Print Pairs
+    Use 2 for loops starting from i = 0 and j = i+1. Print all elements at i and j which will essentially print all pairs.
+    Time Complexity : O(n^2)
+
+6. Largest Element
+    Set largest_so_far to the first element of the array. Now traverse the array from 1 to n-1 and update largest_so_far
+    to the current element if current element is larger than largest_so_far. Return largest_so_far after the loop ends.
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+7. Maximum Subarray Sum
+    Create a new array dp and set dp[0] to arr[0]. Now run a for loop where dp[i] = max(nums[i], dp[i-1]+nums[i]). Find the
+    largest element in the dp array which will be maximum subarray sum.
+    Time Complexity : O(n)
+    Space Complexity : O(n)
+
+8. Lower Bound
+    This involves the use of binary search. Check the mid of the array. If the arr[mid] is <= target, that could be the lower
+    bound so update the ans to arr[mid] and search in the right part of the array. If arr[mid] > target search in the
+    left part of the array.
+    Time Complexity : O(logn)
+    Space Complexity : O(1)
+
+9. Sorted Pair Sum
+    Keep two pointers i and j at the start and end of the array. Check the abs difference of the sum of these elements
+    from the target element. Keep a minimum absolute difference variable and check whether the current abs diff is smaller.
+    If it is save the current pair. Now if current pair sum is smaller than target increase i value otherwise decrease
+    j value and repeat the process.
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+10. K Rotate
+    The optimized way of doing this is, first reverse the entire array. Then reverse the first k elements and then the 
+    last (n-k) elements.
+    [1,2,3,4,5] and k = 2
+    [5,4,3,2,1] (step 1)
+    [4,5,3,2,1] (step 2)
+    [4,5,1,2,3] (step 3)
+    Time Complexity : O(n)
+    Space Complexity : O(n)
+
+11. Inbuilt Search
+    Use the find method to do a linear search inside array. 
+    auto it = find(v.begin(), v.end(), target);
+    int index = it - v.begin()
+
+12. Rotate Image
+    This problem can be broken down into 2 steps
+    First take the transpose of the matrix
+
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<n; j++) {
+            if(i > j) {
+                swap(matrix[i][j], matrix[j][i]);
+            }
+        }
+    }
+
+    Then do a columnwise swapping
+
+    for(int i=0; i<n/2; i++) {
+        for(int j=0; j<n; j++) {
+            swap(matrix[j][i], matrix[j][n-1-i]);
+        }
+    }
+
+    Time Complexity : O(n^2)
+    Space Complexity : O(1)
+
+13. Set matrix zeroes
+    First traverse the matrix and store all the pairs of row and cols which are zeroes.
+    Now traverse the stored pairs and set each row and col to 0.
+    (This however is not the most optimal solution)
+
+    Time Complexity : O((n+m) * (n+m)) (In worst case)
+    Space Complexity : O(n*m)
+
+14. Two Sum
+    Traverse the array and keep a hash map to keep track of all the visited elements inside the array. If you find an element
+    such that another element exists inside the hash map and their sum is equal to target, return their indices.
+
+    Time Complexity : O(n)
+    Space Complexity : O(n)
+
+15. Three Sum
+    First sort the array, then traverse the array till the third last element and create 2 more pointers start and end
+    which check the array for triplets for every outer for loop iteration. For some further optimisation add condition
+    if(nums[i] == nums[i-1]) {continue} to avoid unnecessary duplicacy in computation.
+
+    Time Complexity : O(n^2)
+    Space Complexity : O(n)
+
+16. Largest Mountain
+    Traverse the array from 2nd to 2nd last element and find a peak element. Peak element is the element which is greater
+    than both its neighbors. Then start running a while loop in left and right directions from that element keeping track 
+    of count at every iteration. The count at the end is the length of the mountain, check if the current mountain length
+    is greater than the one found so far.
+
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+17. Longest Consecutive Sequence
+    Insert each element inside an unordered set. Now traverse the array and check if the current element starts a chain.
+    Current element will start a chain if one lesser than that element does not ecist inside the set. Now once you have
+    the beginning of the chain, keep checking for the next element inside the set and keep increasing the count by one.
+    The count after the end of the loop is the length of the current chain you found. Update the global chain length with
+    that length.
+
+    Time Complexity : O(n)
+    Space Complexity : O(n)
+
+18. Rainwater Trapping
+    
