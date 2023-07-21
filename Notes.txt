@@ -301,3 +301,19 @@ Strings
 
 15. Sort Subsequences
     First simply generate substrings of a string then sort them with a comparator.
+
+16. Digital Clock
+    Just check minute conversion, if its single digit append a 0 and return in hh:mm format.
+
+17. Biggest Number String
+    Sort the numbers using a special comparator
+    to_string(num1) + to_string(num2) > to_string(num2) + to_string(num1)
+    Then append all the numbers inside the sorted list and return the string.
+
+18. Palindrome Break
+    If the word is only one character, return an empty string. Otherwise traverse till the middle of the string, find
+    a character which is not 'a', convert it to 'a' and return the string. If not such character is found, convert the 
+    last character to a 'b' and return the string.
+
+19. String normalization
+    Requires closer analysis.
