@@ -191,3 +191,82 @@ Arrays and Vectors
 
     Time Complexity : O(n)
     Space Complexity : O(1)
+
+
+Strings
+
+1. Count Digits and Spaces
+    Simply traverse the string and maintain two counts which are count_spaces and count_digits both initialised to 0.
+    Whenever a space is encountered i.e current character == ' ' increase the count of spaces by one and whenever a 
+    digit is encountered i.e cc >= '0' and cc <= '9' increase the count of digits by one.
+    
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+2. Find Shortest Path
+    First calculate the total displacement in x and y direction. Now create an output empty string and if final x is less
+    than 0 that means the movement was in east and if x was greater than 0 movement was in west. Similarly if final y 
+    is less than 0 that means movement was in south and otherwise movement was in north.
+
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+3. Is Palindrome
+    Traverse the array from start to middle, compare the ith element with (n-1-i)th element, if they are not equal return
+    false. If the loop is terminated return true.
+
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+4. String Compression
+    Maintain a count variable initialized to 1 and traverse till the second last index of the array. Check the condition
+    whether current character is equal to next character. If it is, simply increase the count, otherwise place the current
+    character at kth index and then check if the count id greater than 1. If it is, convert count to string and place 
+    every character at next index after k. In the end return the k value which will be the length of the modified array.
+
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+5. Are Permutation
+    First check if the strings are of unequal length. If they are simply return false. Now create a frequency vector of
+    256 indices and store the character frequency of the first string in the vector. Now subtract the character frequency
+    of the second string from the same vector. Now traverse the array, if a non zero element is found the strings were not
+    permutations, otherwise they were.
+
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+6. Remove Duplicates
+    First sort the string. Now create an output empty string. Traverse the string till the second last element and 
+    everytime you find a character not equal to the next character, append that character to the output string. 
+    After exiting the loop append the last character of the string to the output string and return the output string.
+    
+    Time Complexity : O(logn)
+    Space Complexity : O(n)
+
+7. Vowel Find
+    Traverse the string, check if the current character is a vowel and append it to output. Otherwise skip the current 
+    character.
+
+    Time Complexity : O(n)
+    Space Complexity : O(n)
+
+8. Binary String to Number
+    Traverse the string from right to left and maintain a power variable initialised to 0 and a sum and do simple binary 
+    arithmetic. Keep increase power at every step and return the result in the end.
+
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+9. Find Substring Index
+    Its a good idea to use the find function to find the index of the substring inside a bigger string.
+    int index = s.find(sub);
+    int nextIndex = s.find(sub, index+1);
+    If at any point index is -1, it means the substring was not found.
+
+    Time Complexity : O(n)
+
+10. Find All Occurences
+    Repeatedly run the find function, first with the substring as the argument then with substring and index+1 as the
+    second argument until a -1 is returned which indicates that substring is not found.
+
