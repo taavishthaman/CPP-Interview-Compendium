@@ -270,3 +270,34 @@ Strings
     Repeatedly run the find function, first with the substring as the argument then with substring and index+1 as the
     second argument until a -1 is returned which indicates that substring is not found.
 
+    Time Complexity : O(n)
+
+11. Space20
+    Traverse the character array and find the number of spaces and length of the current string. The length of the new
+    string would be length of current string + 2 * number of spaces. Now keep 2 pointers one at the end of the original
+    string and one at the end of the calculated length of the new string. Transfer all characters from i to jth index, if
+    a space is encountered insert a %20 (3 characters) at the jth index to j-2th index and decrease index of j by 3.
+
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
+12. String Tokenizer
+    We can tokenize string using stringstream. Pass the string as an argument inside stringstream and initialize a token string.
+    stringstream ss(s);
+    string token;
+
+    while(getline(ss, token, ' ')) {
+        cout<<token<<" ";
+    }
+
+13. String Key Sort
+    First tokenise the string vector. Now sort the tokens using a comparator according to column number. Then reform
+    the strings.
+
+14. Check Subsets
+    Traverse both the strings from back. If the current characters match, decrease the index of smaller string otherwise
+    keep traversing the larger string in backwards direction. If at the end, index of the smaller string becomes -1
+    the smaller string is subset of the larger string.
+
+15. Sort Subsequences
+    First simply generate substrings of a string then sort them with a comparator.
