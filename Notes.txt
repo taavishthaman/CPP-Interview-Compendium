@@ -294,26 +294,91 @@ Strings
     First tokenise the string vector. Now sort the tokens using a comparator according to column number. Then reform
     the strings.
 
+    Time Complexity : O(nlogn)
+    Space Complexity : O(1)
+
 14. Check Subsets
     Traverse both the strings from back. If the current characters match, decrease the index of smaller string otherwise
     keep traversing the larger string in backwards direction. If at the end, index of the smaller string becomes -1
     the smaller string is subset of the larger string.
 
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
 15. Sort Subsequences
     First simply generate substrings of a string then sort them with a comparator.
 
+    Time Complexity : O(2^n)
+    Space Complexity : O(2^n)
+
 16. Digital Clock
     Just check minute conversion, if its single digit append a 0 and return in hh:mm format.
+
+    Time Complexity : O(1)
+    Space Complexity : O(1)
 
 17. Biggest Number String
     Sort the numbers using a special comparator
     to_string(num1) + to_string(num2) > to_string(num2) + to_string(num1)
     Then append all the numbers inside the sorted list and return the string.
 
+    Time Complexity : O(nlogn)
+    Space Complexity : O(1)
+
 18. Palindrome Break
     If the word is only one character, return an empty string. Otherwise traverse till the middle of the string, find
     a character which is not 'a', convert it to 'a' and return the string. If not such character is found, convert the 
     last character to a 'b' and return the string.
 
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+
 19. String normalization
-    Requires closer analysis.
+    Requires more closer analysis.
+
+
+
+Basic Sorting Algorithms
+
+1. Bubble Sort
+    Run an outer loop for n-1 iterations and the inner loop starting from 0 to n-1-i iterations for each i. Swap two adjacent
+    elements if they are out of order everytime.
+
+    Time Complexity : O(n^2)
+    Space Complexity : O(1)
+
+2. Insertion Sort
+    Start traversing the array from first index and store the value of the current element. Now start a backwards 
+    iteration from current index - 1 comparing each element with the current element and moving the index-1th element
+    to the index until an element is found which is lesser than the current value. Now swap the current element with 
+    one index ahead of that element's position. Keep doing this till the array is sorted.
+
+    Time Complexity : O(n^2)
+    Space Complexity : O(1)
+
+3. Selection Sort
+    Start traversing the array with the outer for loop starting from 0th index and inner for loop one greater than outer
+    index. Let's say the element at the 0th index is the minimum element. Now if the inner for loop finds an element which
+    is smaller than the ith element, store that index. After the inner loop finishes, swap the stored index with the ith
+    index. Repeat until sorted.
+
+    Space Complexity : O(n)
+    Time Complexity : O(1)
+
+4. Counting Sort
+    Create a frequency vector of each element of the input array where index of the element is the element. Now traverse 
+    the frquency vector and insert each element in the correct position in the input array.
+
+5. Pair Sticks
+    Sort the array and traverse the array using 2 pointers. For each element check if their difference is less than or
+    equal to D. If it is increase the count by 1 and erase both elements from the array. Repeat the process until less 
+    than 2 elements remain or no more pairs can be formed.
+
+    Time Complexity : O(n^2)
+    Space Complexity : O(1)
+
+6. Defense Kingdom
+    Create 2 arrays to hold x and y coordinates. Insert 0 to both to signify the start of the board and then insert all
+    x and y coordinates to both arrays. Now insert width and height of board to x and y vectors. Now sort both arrays and 
+    calculate maximum difference of x and y coordinates. Return (width - 1) * (height - 1).
+
