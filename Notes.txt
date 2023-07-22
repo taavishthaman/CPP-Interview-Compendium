@@ -382,3 +382,22 @@ Basic Sorting Algorithms
     x and y coordinates to both arrays. Now insert width and height of board to x and y vectors. Now sort both arrays and 
     calculate maximum difference of x and y coordinates. Return (width - 1) * (height - 1).
 
+    Time Complexity : O(nlogn)
+    Space Complexity : O(n)
+
+
+Two Dimensional Arrays
+
+1. Spiral Print
+    Declare 4 variables sr, sc, er and ec. Now run a while loop which checks for sr <= er && sc<= ec and then traverse
+    the boundary. Now decrease boundary at the end of one iteration of while loop. Keep doing so until the loop ends.
+
+2. Wave Print
+    Traverse the last column of the matrix from top to bottom and then decrease the row and maintain a boolean variable
+    which dictates the direction of traversal. After every traversal flip the variable and repeat until all columns are
+    exhausted.
+
+3. Staircase Search
+    Initialize a pointer to the first row and last column. If the target number is smaller go left, if its larger go
+    down, repeat until element is found or the pointer reaches out of bounds.
+
