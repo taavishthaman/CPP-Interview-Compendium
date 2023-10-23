@@ -2,42 +2,37 @@
 using namespace std;
 
 vector<vector<int>> threeSum(vector<int> & nums) {
-    vector<vector<int>> op;
-    set<vector<int>> s;
-    
-    sort(nums.begin(), nums.end());
-    
     int n = nums.size();
-    
+    vector<vector<int>> op;
+    if(n < 3) {
+        return op;
+    }
+    sort(nums.begin(), nums.end());
+
     for(int i=0; i<n-2; i++) {
-        if(nums[i] == nums[i-1]) {
+        if(i > 0 && nums[i] == nums[i-1]) {
             continue;
         }
-        
         int start = i+1;
         int end = n-1;
-        
+
         while(start < end) {
             int sum = nums[i] + nums[start] + nums[end];
             if(sum == 0) {
                 vector<int> v = {nums[i], nums[start], nums[end]};
-                s.insert(v);
+                op.push_back(v);
                 start++;
-                end--;
-            }
-            else if(sum < 0) {
+                while(nums[start] == nums[start-1] && start < end) {
+                    start++;
+                }
+            } else if(sum < 0) {
                 start++;
-            }
-            else {
+            } else {
                 end--;
             }
         }
-    }
-    
-    for(vector<int> v : s) {
-        op.push_back(v);
-    }
-    
+    }   
+
     return op;
 }
 

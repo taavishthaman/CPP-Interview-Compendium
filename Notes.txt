@@ -115,7 +115,9 @@ Arrays and Vectors
 15. Three Sum
     First sort the array, then traverse the array till the third last element and create 2 more pointers start and end
     which check the array for triplets for every outer for loop iteration. For some further optimisation add condition
-    if(nums[i] == nums[i-1]) {continue} to avoid unnecessary duplicacy in computation.
+    if(nums[i] == nums[i-1]) {continue} to avoid unnecessary duplicacy in computation. Add a while loop to the inner
+    loop which moves the start and the end pointers to handle this same condition. It must be handled in both outer
+    and inner loop.
 
     Time Complexity : O(n^2)
     Space Complexity : O(n)
