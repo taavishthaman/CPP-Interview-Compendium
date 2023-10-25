@@ -200,8 +200,9 @@ Strings
 1. Count Digits and Spaces
     Simply traverse the string and maintain two counts which are count_spaces and count_digits both initialised to 0.
     Whenever a space is encountered i.e current character == ' ' increase the count of spaces by one and whenever a 
-    digit is encountered i.e cc >= '0' and cc <= '9' increase the count of digits by one.
-    
+    digit is encountered i.e cc >= '0' and cc <= '9' increase the count of digits by one and for letters do cc >= 'a'
+    and cc <= 'z' && cc >= 'A' && cc <= 'Z'.
+
     Time Complexity : O(n)
     Space Complexity : O(1)
 
@@ -226,6 +227,9 @@ Strings
     character at kth index and then check if the count id greater than 1. If it is, convert count to string and place 
     every character at next index after k. In the end return the k value which will be the length of the modified array.
 
+    C++: to_string(x) converts number to string
+    JS: String(x) converts number to string
+
     Time Complexity : O(n)
     Space Complexity : O(1)
 
@@ -235,6 +239,9 @@ Strings
     of the second string from the same vector. Now traverse the array, if a non zero element is found the strings were not
     permutations, otherwise they were.
 
+    To convert character to ascii in Javascript use Character.charCodeAt(0) method
+    Example: 'a'.charCodeAt(0) will give 97.
+
     Time Complexity : O(n)
     Space Complexity : O(1)
 
@@ -243,7 +250,7 @@ Strings
     everytime you find a character not equal to the next character, append that character to the output string. 
     After exiting the loop append the last character of the string to the output string and return the output string.
     
-    Time Complexity : O(logn)
+    Time Complexity : O(nlogn)
     Space Complexity : O(n)
 
 7. Vowel Find
@@ -265,6 +272,8 @@ Strings
     int index = s.find(sub);
     int nextIndex = s.find(sub, index+1);
     If at any point index is -1, it means the substring was not found.
+
+    For Javascript use the indexOf() method i.e haystack.indexOf(needle, index+1); index+1 can be 0
 
     Time Complexity : O(n)
 
