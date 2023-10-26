@@ -322,6 +322,10 @@ Strings
     Time Complexity : O(2^n)
     Space Complexity : O(2^n)
 
+    An important piece of information here is that a subset and a subsequence are same things 
+    (they can have break in elements, they can be non continuous) but a substring must be continuous
+    Eg: "abc" -> "ac" can be a subsequence but not a substring
+
 16. Digital Clock
     Just check minute conversion, if its single digit append a 0 and return in hh:mm format.
 
