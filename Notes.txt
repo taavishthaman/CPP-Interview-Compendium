@@ -416,3 +416,57 @@ Two Dimensional Arrays
     Initialize a pointer to the first row and last column. If the target number is smaller go left, if its larger go
     down, repeat until element is found or the pointer reaches out of bounds.
 
+
+Sliding Window Problems
+
+1. Housing
+    The objective is to find out all the subarrays whose sum is equal to a target value. The elements will be positive.
+    We create a window of size 0 with i and j initialised at index 0 and maintain a variable called cs = 0. Run a while
+    loop with j < length of array and while cs is lesser than target keep expanding the window. Once cs exceeds target
+    remove elements at the beginning. Now check if the cs is equal to the target and if it is, print the current window.
+
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+
+2. Maximum Substring with Unique Characters
+
+    Create a hash map with charcter as a key and its index as a value. Traverse the string and at every index we will have
+    two choices. Either the character does not exist inside the hash map or it does. The default step is to add it to the 
+    hash table and increase the current window size by one and check the whether the current window size is greater than
+    the max window size so far. If it is than set max_window_size to current window size and also set the start value to
+    the i value. Before this check if the character exists inside the hash map and also the index inside the hash map is
+    greater than i value (i.e the start of the current window). Now if it is set the i value to m[ch] + 1 and current length
+    to j-i.
+
+    Time Complexity O(n)
+    Space Complexity O(n)
+
+3. Minimum Window Substring
+
+    The Objective is to find a minimum length substring inside the larger string which contains all the characters of the
+    pattern string. To achieve this first create a frequency map FP for storing pattern string. Then create a map FS for
+    storing the current window in question. Traverse the string, fill the FS map and maintain a variable called cnt. Now
+    if the current character is present inside the pattern map and its frequncy inside the current window map is smaller
+    or equal to the frequency inside the pattern map then increase cnt value by 1. 
+
+    Now once the value of cnt is equal to the length of the pattern string, that means that all characters if the pattern
+    exist inside the current window. So we will start removing characters from the beginning of the string or where our
+    start pointer is placed. So if the character at start of the window does not exist inside the pattern map or its
+    frequency inside the window map is greater than frequncy inside the pattern map, remove that element from the window
+    map and increase the value of start. Keep repeating and check the current window size and compare with minimum size
+    found so far. Also update the value of the window_start variable which is initialised with -1 which denotes the start
+    index of the minimum window found so far.
+
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+
+4. Smallest Distinct Window
+    This is exactly the same as maximum substring with unique characters.
+
+5. Count subarrays with target sum
+    This is a modification of the housing problem with negative numbers also existing inside the array. Create a prefix
+    array and a hashmap which contains prefix sum as key and its frequency as value. Insert the first element of the array
+    and set its value as 1. Traverse the array and fill the prefix index, then check if prefix[index]-k exists inside the
+    map. If it does add its value to the count. Check another condition whether prefix[index] itself is equal to target.
+    That means that startinf from 0 index to current index sum of values is equal to target sum, add count+1 if this is true.
+    Return the count at the end of the loop.
