@@ -591,5 +591,27 @@ Dynamic Programming
         amount of jumps to get from there till end by running an inner loop which checks from jump = 1 to jump = arr[i].
         Take the minimum of all possible results.
 
-    
+    5. Longest Common Subsequence: 
+    Important: Initialize 2D DP array with -1 since 0 could be a valid answer during TD code.
 
+    Objective is to find the maximum length of the common subsequence between two strings. In recursive or top down approach
+    initialize both the strings from i=0 and j=0 and check if the charcter at both the strings match. If it does then add 1
+    to the recursive call on the remaining both strings from i+1 and j+1. If they do not match at the current indices then
+    find the max of i+1 of the first string and j+1 of the second string and return it. In the base case if i or j reach end
+    of their respective strings then simply return 0. Please note during memoisation of TD Solution, Initialise the array with
+    -1 values as 0 can also be a valid answer.
+
+    In the Bottom Up Approach create an array of s1.size()+1 and s2.size()+1 dimensions and the first row and column should
+    be initialised with 0 as i=0 and j=0 denote empty strings and act as base cases. Now traverse the 2d array from 1 based 
+    indexing and if the current charcter matches add 1 to the result stored in the left upper diagonal(i-1, j-1) and if they
+    do not match then store the maximum of the cells directly above and to the left max(dp(i-1, j) and dp(i, j-1)).
+    The final answer will be stored at the last index. 
+
+    If we want to generate the string we must start tracing the array from the last index. If the value of the current index
+    matches with the one directly above then move the pointer to directly above and if the value matches to the index directly
+    on the left, move the pointer to left and if they don't then the current indices should match, add the character to the
+    output and move to i-1 and j-1.
+
+    6. Count Subsequences
+
+        
