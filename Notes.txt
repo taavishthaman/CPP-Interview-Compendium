@@ -468,5 +468,128 @@ Sliding Window Problems
     array and a hashmap which contains prefix sum as key and its frequency as value. Insert the first element of the array
     and set its value as 1. Traverse the array and fill the prefix index, then check if prefix[index]-k exists inside the
     map. If it does add its value to the count. Check another condition whether prefix[index] itself is equal to target.
-    That means that startinf from 0 index to current index sum of values is equal to target sum, add count+1 if this is true.
+    That means that starting from 0 index to current index sum of values is equal to target sum, add count+1 if this is true.
     Return the count at the end of the loop.
+
+
+Binary Search
+
+    1. Frequency Count
+    
+    First find the lower bound index of an element. To do that run the standard binary search routine
+    but also maintain an extra variable called result initialised with -1. Whenever the target element is found, set the 
+    result as that index and search in the left half. Keep doing this until convergence and lower bound will be acquired.
+    Similarly find the uper bound but search in the right direction instead. Frequency count will be hi-lo+1.
+
+    Time Complexity: O(logn)
+    Space Complexity: O(1)
+
+    2. Rotated Search
+
+    Run a standard binary search routine but modify it as following. Check whether mid is the element, if it is then return
+    mid as the answer otherwise there will be 2 cases. Either the mid lies on the first line or the second line.
+
+    To check if the mid lies on the first line simply do arr[start] <= arr[mid] else the second line.
+    If the mid lies on the first line, now check whether the target lies on the left hand side of the first line or right
+    hand side. To check if the target lies on the left side simply check if arr[start] <= arr[target] and arr[target] <= arr[mid]
+    and shift the end pointer to mid-1. Otherwise shift start to mid+1.
+
+    If the mid lies on the second line check whether the target lies on the right hand side of the second line. Do this by
+    checking if target >= arr[mid] && target <= arr[end]. If the target lies on the right side do start = mid + 1 otherwise
+    end = mid - 1.
+
+    Time Complexity : O(logn)
+    Space Complexity : O(1)
+
+    3. Square Root
+
+    The objective is to find the square root of a number to a certain precision P. First run a simple binary search to find
+    the first digit of the square root. Then inside a for loop which runs till P, run another loop which goes to a max value
+    of 10 and keeps adding a factor to the result. If result times result becomes greater than result break the inner loop and
+    subtract one factor value from the result.
+
+    Time Complexity : O(logn + P)
+    Space Complexity : O(1)
+
+
+
+Dynamic Programming
+
+    Optimal Substructure: Optimal Substructure means a problem can be solved by breaking it into subproblems and combining
+    the solutions of the subproblems.
+
+    Overlapping Subproblems: Subproblems which are being computed again and again.
+
+    1. NK Ladders 
+        Problem is that starting from 0 and taking anuywhere from 1 to k steps at a time, how many ways are there to reach the
+        Nth step.
+
+        Recursive Solution: Start from N and run a loop from 1 to K. Call the function inside every iteration of the loop.
+        subtracting the i value from N. Maintain an ans varable initialised at the top to 0 and add the result of every 
+        recursive call to the ans. The return the ans outside the loop. Base case will be if 0 is reached then return 1 as
+        that is a valid way, if < 0 then return 0. This is like an enhanced version of fibonacci but the base case is
+        slightly different.
+
+        Time Complexity : O(2 ^ n)
+        Space Complexity: O(2 ^ n)
+
+        Bottom Up: Create a dp array of size N+1, initialize 0 index with 1 and add previous k values to the current cell.
+
+        Time Complexity : O(N * k)
+        Space Complexity : O(N)
+
+        Bottom Up Optimised : Create an array of N+1 length and initialize 0 index with 1. For every cell i the result
+        will be 2 * dp[i-1] - d[i-k-1]. For the first k cells the answer for each cell i would be simply 2 * dp[i-1].
+
+        So first run a loop for 0 to k and then k+1 to N.
+
+        Time Complexity : O(N)
+
+    2. Coin Change (Coin Change I)
+
+        The objective is to find the minimum number of coins required to create a given amount. The recursive definition
+        can be written as for all coins in denominations subtract the current coin from the amount and calculate the min
+        coins required for creating the amount currentAmount - coins[i], and do the same for all coins and find out the
+        minimum result among all of them and add one to it. If the amount is 0 which is the base case then return 0 since
+        0 coins are required to make 0 amount. Also make sure that call is not being made to an amount lesser than 0.
+
+        Time Complexity O(C^N) where C are coins and N is amount
+
+        In the Bottom Up Approach, create an array of size amount+1. First set the current index to INT_MAX and then for every
+        index starting 1 check all the coins required to make that amount(index). If index - coin  >= 0 only consider the 
+        coin and check the value of dp array at that index, if its not INT_MAX then  add one to that amount and take a minimum
+        with current value of dp[i]. Do so for all of the coins and in the end check the value of last index, if its INT_MAX
+        return -1 as creating that value would be impossible otherwise return the value.
+
+        Time Complexity O(N * C) where C are total coins and N is the amount.
+
+
+    3. Rod Cutting:
+
+        Find the maximum profit that can be obtained by cutting a rod of length N into multiple pieces. Price of each piece is
+        given. The recursive solution is to run a loop from 0 to N and make a cut of length i+1 on the rod. Add the price of the
+        current cut and recursively calculate the price of the remaining rod. If rod length becomes 0 return 0 as the base case.
+        Now for all the cuts check the max profit obtained for all the cut prices and their respective subproblems.
+
+        For the bottom up solution first create a dp array of length N+1 and initialize dp[0] to 0. Now run a loop for length 1
+        to N and run an inner loop for j equals 0 to j lesser than len. Now the cut would be of length j+1. So Add the price
+        of j and dp[len-cut] and keep doing so for all the cuts while maintaining a max value and at the end of the inner loop
+        set the current dp[len] to that value. Return dp[N] at the end of the function.
+
+        Time Complexity: O(N^2)
+        Space Complexity: O(N)
+
+    4. Minimum Jumps:
+
+        Given an array whose indices denote maximum jump you can take at that index. Return the minimum jumps needed to reach the 
+        last index. Recursively this problem can be broken down as follows, starting from jump = 1 to jump = arr[idx] add 1 + 
+        function call at the jump + idx index and find the 1 + minimum of all those recursive calls. In the base case if the last
+        index is reached return 0, and if array boundary is exceeded return INT_MAX. While checking for subproblems check if
+        a subproblem returns an INT_MAX and if it does do not consider it while calculating the min jumps. 
+
+        For the bottom up approach traverse the array from n-2th index to 0. For each index calculate what will be the minimum
+        amount of jumps to get from there till end by running an inner loop which checks from jump = 1 to jump = arr[i].
+        Take the minimum of all possible results.
+
+    
+
