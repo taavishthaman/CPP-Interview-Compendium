@@ -612,6 +612,15 @@ Dynamic Programming
     on the left, move the pointer to left and if they don't then the current indices should match, add the character to the
     output and move to i-1 and j-1.
 
-    6. Count Subsequences
 
-        
+Queues
+    1. First Non Repeating Letter
+        We are given an input stream of characters and we have to tell the first non repeating character for every single 
+        index inside the input stream. The algorithm to do so is as follows:
+
+        Create a hash map (frequency map) and a queue Traverse over the string and add the character to the map and push it 
+        to the queue. Now check every single character starting from the front of the queue and if its frquency is greater
+        than 1 inside the map, remove that character. Do so until the queue is empty or the first character inside the queue
+        has frequency equal to 1. If the queue is empty print a -1 otherwise print the first character of the queue.
+
+
