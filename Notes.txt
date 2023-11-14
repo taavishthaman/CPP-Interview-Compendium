@@ -511,6 +511,43 @@ Binary Search
     Time Complexity : O(logn + P)
     Space Complexity : O(1)
 
+    4. Angry Birds
+
+    Given N number of nests and B birds, we have to place these B birds on the nests such that no two birds are on the same
+    nest and the separation between the birds is the maximum possible separation. This problem can be solved using binary search
+    by modifying the search space. First sort the nests array and set lo as 0 and hi as the nest at the last index. Now run
+    a binary search and check whether B birds can be placed on all the nests with a minimum separation of mid. If they can
+    then set the result as mid and reduce the search space to mid + 1 and hi and if they cannot be placed then reduce the 
+    search space in the left direction that is lo to mid-1 and do not update the result in this case. Keep updating and finding
+    the maximum possible value of result and return it in the end.
+
+    Time Complexity: O(nlogn + nlogm) where m is the maximum element inside the nests array 
+    Space Complexity: O(1)
+
+    5. Minimum Pairs
+
+    Sort the second array and search for the lower bound of each value in the first array. The lower bound function will
+    give the element in the second array which is just larger than the element in the first array. Now for every element 
+    we will compare it with the element at the lower bound index and one previous element, calculate the difference and
+    update some global variables. Make sure to handle some edge cases where lb-1 is greater than or equal to zero and the
+    one where lb is lesser than size of array.
+
+    Time Complexity: O(MlogM + NlogM) where N and M are the size of the first and second array respectively
+    Space Complexity: O(1)
+
+    6. Game of Greed
+
+    The objective is to divide coins among k friends such that the first k-1 friends pick up the largest divisions and the 
+    last friend remaining picks up the smallest division and that division is maximum possible. To do this create a search
+    space of lo = 0 and hi  = sum of all coins. Now for every mid in binary search check if the distribution can be made, if
+    it can then set lo to mid +1 and res to mid otherwise search in the left searchspace.
+
+    Time Complexity: O(N * log(sum(N)))
+    Space Complexity: O(1)
+
+Sorting and Searching
+    
+
 
 
 Dynamic Programming
@@ -622,5 +659,8 @@ Queues
         to the queue. Now check every single character starting from the front of the queue and if its frquency is greater
         than 1 inside the map, remove that character. Do so until the queue is empty or the first character inside the queue
         has frequency equal to 1. If the queue is empty print a -1 otherwise print the first character of the queue.
+
+Heaps
+    For the running median, 3 overall cases (comparing heap sizes) and 2 cases for each of them.
 
 
