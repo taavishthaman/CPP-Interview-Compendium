@@ -545,9 +545,64 @@ Binary Search
     Time Complexity: O(N * log(sum(N)))
     Space Complexity: O(1)
 
-Sorting and Searching
-    
+Basic Sorting Algorithms
 
+    1. Bubble Sort
+
+    Run the outer loop for n-1 times and the inner loop from 0 to n-1-times and keep swapping adjacent elements is the current
+    element is larger than the next element. Every time the inner loop decreases by one since the elements keep going in their
+    correct place after every inner loop iteration.
+
+    Time Complexity : O(n * n)
+    Space Complexity : O(1)
+
+    2. Insertion Sort
+
+    Run the outer loop from first index to last index and inside the loop traverse backwards and check if the element is larger
+    than the current element, i.e the element marked by the outer loop. If it is keep replacing the next element with the
+    element marked by inner iterator and once an element smaller than current is found replace the one next to it with the
+    current element.
+
+    Time Complexity : O(n * n)
+    Space Complexity : O(1)
+
+    3. Selection Sort
+
+    For every element till the second last find the element in the res of the array which is smaller than it and save its index.
+    Once the smallest index is found, replace it with the current element's index. Keep repeating until array is sorted.
+
+    Time Complexity : O(n * n)
+    Space Complexity : O(1)
+
+    4. Counting Sort
+
+    Find the largest element and create a new temporary array with its size. Now traverse the original array and at the index
+    pointed by the element increase the count in the temp array. Now traverse the temp array and while an element is graeter
+    than 0 keep adding that index to the original array while also incresing the index of the original array and decreasing the
+    current element inside temporary array by 1.
+
+    Time Complexity : O(largest + N)
+    Space Complexity : O(largest)
+
+    5. Pairing Sticks
+
+    The objective is to find total pairs of sticks whose difference per pair is at most D. So sort the array and run two nested
+    loops outer starting from 0 to n-2 and inner from outer+1 to n-1. Now check each pair's difference and if they satisfy the
+    criteria increment the total by 1 and set both of them to INT_MAX as they cannot be used further. Do not consider INT_MAX
+    values when finding the difference. 
+
+    Time Complexity : O(n * n)
+    Space Complexity : O(1)
+
+    6. Defense Kingdom
+
+    The objective is to find the largest area cpatured by the castles. So first collect the x and y coordinates from the 
+    given pair array. Push 0 to the front of both and W+1 to the x array and H+1 to the y array. Now sort both the arrays. 
+    Now find the largest difference of two consecutive elements in both the arrays. Subtact one from each and multiply them
+    and that will be the result.
+
+    Time Complexity : O(nlon + mlogm)
+    Space Complexity : O(n + m)
 
 
 Dynamic Programming
