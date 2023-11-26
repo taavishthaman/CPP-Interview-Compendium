@@ -394,8 +394,8 @@ Basic Sorting Algorithms
 
 6. Defense Kingdom
     Create 2 arrays to hold x and y coordinates. Insert 0 to both to signify the start of the board and then insert all
-    x and y coordinates to both arrays. Now insert width and height of board to x and y vectors. Now sort both arrays and 
-    calculate maximum difference of x and y coordinates. Return (width - 1) * (height - 1).
+    x and y coordinates to both arrays. Now insert width+1 and height+1 of board to x and y vectors. Now sort both arrays 
+    and calculate maximum difference of x and y coordinates. Return (maxW - 1) * (maxH - 1).
 
     Time Complexity : O(nlogn)
     Space Complexity : O(n)
@@ -404,17 +404,57 @@ Basic Sorting Algorithms
 Two Dimensional Arrays
 
 1. Spiral Print
+
     Declare 4 variables sr, sc, er and ec. Now run a while loop which checks for sr <= er && sc<= ec and then traverse
     the boundary. Now decrease boundary at the end of one iteration of while loop. Keep doing so until the loop ends.
 
+    Time Complexity : O(n * n)
+    Space Complexity : O(1)
+
 2. Wave Print
+
     Traverse the last column of the matrix from top to bottom and then decrease the row and maintain a boolean variable
     which dictates the direction of traversal. After every traversal flip the variable and repeat until all columns are
     exhausted.
 
+    Time Complexity : O(n * n)
+    Space Complexity : O(1)
+
 3. Staircase Search
+
     Initialize a pointer to the first row and last column. If the target number is smaller go left, if its larger go
     down, repeat until element is found or the pointer reaches out of bounds.
+
+    Time Complexity : O(n + m)
+    Space Complexity : O(1)
+
+4. Mango Trees
+
+    First create a prefix sum 2D array where prefix(i,j) denotes the number of trees in that chunk of land. Now traverse the
+    2D array and for each index i and j partition the land into 4 chunks with the number of trees in each chunk s1, s2, s3 and
+    s4. Now find the minimum among all of them and update the max so far value. Retunr the max so far in the end.
+
+    Time Complexity : O(n * n)
+    Space Complexity : O(n * n)
+
+5. Pascal's Triangle
+
+    Create a nested loop and inside the inner loop check if either j is 0 or j is i, if they are push 1 to the current vector.
+    Otherwise sum the values of op[i-1][j-1] and op[i-1][j] and push that sum to the vector. In the end of the inner iteration
+    push the current vector in the output. Return the output in the end.
+
+    Time Complexity : O(n * n)
+    Space Complexity : O(n * n)
+
+6. Submatrix Sum
+
+    This one is similar to mango trees. First create the prefix sum 2D array and now let's create 4 sums which are s1, s2,
+    s3 and s4. The important thing to note here is that s1 will be prefix[sr-1][sc-1] instead of prefix[sr][sc] as that will
+    overlap with other sums. Also if any of sr and sc are 0 in the formation of s1, s2 or s3 these values will become 0 so
+    add a check for that. In the end the result will be s4 - s2 - s3 + s1. 
+
+    Time Complexity : O(n * n)
+    Space Complexity : O(n * n)
 
 
 Sliding Window Problems
