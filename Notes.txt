@@ -456,6 +456,15 @@ Two Dimensional Arrays
     Time Complexity : O(n * n)
     Space Complexity : O(n * n)
 
+7. Rotate Image
+
+    In order to do this in-place the first step is to take the transpose of the array. Traverse the 2D array and for every
+    i > j swap arr[i][j] and arr[j][i]. The second step is to do columnwise swapping. Again tarverse the array and swap every
+    column with its mirror column if the mirror is placed in the center.
+
+    Time Complexity : O(n * n)
+    Space Complexity : O(1)
+
 
 Sliding Window Problems
 
@@ -643,6 +652,104 @@ Basic Sorting Algorithms
 
     Time Complexity : O(nlon + mlogm)
     Space Complexity : O(n + m)
+
+
+Recursion, Backtracking and Divide and Conquer
+
+    1. Facrorial:
+
+        Create a recursive function fact which takes in n as argument. If n is 0 return 1 which is the base case otheriwse 
+        in general case return n * fact(n-1).
+
+        Time Complexity : O(n)
+        Space Complexity : O(n) When stack memory is the largest which is the depth of the tree.
+
+    2. Fibonacci:
+
+        Create a recursive function. And for every n the result will be its previous two terms. So fib(n) will be fib(n-1)
+        + fib(n-2). If n is 0 or 1 return n.
+
+        Time Complexity : O(2 ^ n)
+        Space Complexity : O(n) Max depth of the recursive tree.
+
+    3. Sorted array check:
+
+        Create a recursive function that takes in an array and n which are number of elements inside the array. Now for the
+        base case if n is 0 or n is 1 i.e. no or only one element is in the array return true. Otherwise check if arr[0] < arr[1]
+        and the rest of the array is also sorted. To check for the rest of the array pass in arr + 1 and n-1 to the function and
+        if both of them are true, return true otherwise return false.
+
+        Time Complexity : O(n)
+        Space Complexity : O(n)
+
+    4. Print Increasing Decreasing
+
+        For the decreasing function first print the number than call the function on the reduced input and return when the 
+        input reaches 0. For the increasing function, first call the function on the reduced input then print the number.
+
+        Time Complexity : O(n)
+        Space Complexity : O(n)
+
+    5. First Occurence
+
+        Recursively traverse the array while increase array address by 1 and decreasing n by 1 and check if arr[0] is equal
+        to the target. If it is return 0. Now make a call to the rest if the array and store it inside subIndex. Id subIndex
+        is not -1 that means the rest of the array contains the target so return subIndex + 1 otherwise return -1. For the 
+        base case if no more elements are present in the array i.e. n is 0 return -1.
+
+        Time Complexity : O(n)
+        Space Complexity : O(n)
+
+    6. Last Occurence
+
+        Recursively traverse the array and store the result inside subIndex, when the size is 0 return -1. Now check if
+        subIndex is -1, if it is check if the element at index 0 is the target and if it is return 0 otherwise return -1.
+        Id subIndex is not -1 that means we have the last position of the target so return subIndex+1.
+
+        Time Complexity : O(n)
+        Space Complexity : O(n)
+
+    7. Power Function
+
+        Create a function which takes in two arguments a and n and the goal is to compute a ^ n. The recursion can be written
+        as f(n) = (a ^ (n/2)) * (a ^ (n/2)) is n is even and a * (a ^ (n/2)) * (a ^ (n/2)) if n is odd. So first compute the
+        half power recursively and then half_power_square by multiplying half_power it by itself. Return a * hps or hps depeneding 
+        upon whether n is odd or even.
+
+        Time Complexity : O(logn)
+        Space Complexity : O(logn)
+
+    8. Tiling Problem
+
+        The problem is to find the number of ways to cover a N X M board with M X 1 tiles. In the recursive case there are
+        two ways to cover the board, either place N tiles horizontally which will decrease the length of the board by M
+        or lay one tile vertically which will decrease the length of the board by 1. In the base case if the length of the
+        board becomes lesser than M then there will be only 1 way to lay out tiles on the board. So in the rescursive case
+        f(N) = f(N-M) + f(N-1). 
+
+        Time Complexity : O(2 ^ n)
+        Space Complexity : O(n)
+
+    9. Binary Strings
+
+        Generate n digit strings such that there are no consecutive ones. While generating the string if we place 0 then
+        the rest of the digits can be anything but if we place 1 then the next digit must be 0 so that no consecutive 1's
+        appear. So the recursive case becomes f(N) = f(N-1) + f(N-2) and as for the base case, if N is 0, then return 1 since
+        and if N is 2 return 2.
+
+        Time Complexity : O(2 ^ n)
+        Space Complexity : O(n)
+
+    10. Friends Pairing
+
+        Find the number of ways N friends can be paired if a friend can either decide to go alone or pair with any other person
+        in the group. So the recursive case becomes f(N) = 1 * f(N-1) + (N-1) * f(N-2) since if the friend decides to go alone
+        then rest of people can go in f(N-1) ways and if person decides to pair up, he can pair with any of N-1 friends and the
+        rest can go in f(N-2) ways. As for the base case if N is 0 return 1 and if N is 1 then also return 1.
+
+        Time Complexity : O(2 ^ n)
+        Space Complexity : O(n)
+
 
 
 Dynamic Programming
