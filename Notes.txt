@@ -750,6 +750,10 @@ Recursion, Backtracking and Divide and Conquer
         Time Complexity : O(2 ^ n)
         Space Complexity : O(n)
 
+    11. Merge Sort
+
+    12. Quick Sort
+
 
 
 Dynamic Programming
