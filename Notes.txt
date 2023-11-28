@@ -11,7 +11,7 @@ Arrays and Vectors
     Check if the target element is equal to the element at the mid index. If so, return the mid index. If not, check 
     whether the target element is smaller than the mid element or larger. If smaller, search in the left search space by
     reducing the search space by doing hi = mid - 1. If larger, search in the right search space by reducing the search
-    space by doing lo = mid + 1. Repeat the algorithm until search space reduces to 0. If the element is not found return ]
+    space by doing lo = mid + 1. Repeat the algorithm until search space reduces to 0. If the element is not found return
     -1.
     Time Complexity : O(n)
     Space Complexity : O(1)
@@ -656,7 +656,7 @@ Basic Sorting Algorithms
 
 Recursion, Backtracking and Divide and Conquer
 
-    1. Facrorial:
+    1. Factorial:
 
         Create a recursive function fact which takes in n as argument. If n is 0 return 1 which is the base case otheriwse 
         in general case return n * fact(n-1).
@@ -752,7 +752,41 @@ Recursion, Backtracking and Divide and Conquer
 
     11. Merge Sort
 
+        Merge sort is a recursive algorithm and has three steps. First find the mid index of the array then call the merge sort
+        from start to mid and another merge sort call from mid+1 to end. Now merge the array. For the base case if only one or 0
+        elements remain in the array, return. For the merge function again find the mid point and create a temporary vector and merge
+        the two divisions of the original array in the temp array and then copy the contents of the temp array back to the original
+        array from start to end.
+
+        Time Complexity : O(nlogn)
+        Space Complexity : O(n)
+
     12. Quick Sort
+
+        Quick sort is another recursive algorithm. In the main function first we find the pivot index using another function called partiton,
+        now we recursively call quick sort from start to pivot - 1 and another call from pivot + 1 to end. In the partition function we set the
+        last elemennt of the section of array to the pivot, now we arrange the rest of the array around that pivot such that elements lesser
+        than the pivot are on the left side and greater than pivot are on the right side. Then we put the pivot in its correct position and return
+        the index of the pivot. To accomplish this with code we create two pointers i initialised to start-1 and j initialised to s. Now while 
+        traversing the array using j if an element lesser than pivot is encountered we replace arr[i+1] with that element and increase the value of
+        i by 1. Keep doing so and once out of the loop replace arr[end] which is the pivot with arr[i+1] which is the boundary index and then return
+        i+1.
+
+        Average Time Complexity : O(nlogn)
+        Space Complexity : O(n)
+
+    Backtracking is used to solve three kinds of problems
+
+        I. Decision problems: In this kind of problem we have to find a feasible solution given some constraints, e.g find if the rat can go from some starting
+            point to a destination point. 
+
+        II. optimisation problem: Find the best possible solution. e.g. travelling salesman problem
+
+        III. Enumeration Problem: Find all possible solutions. e.g. Find all substrings or all permutations of a string.
+
+    1. 
+
+    
 
 
 
@@ -835,25 +869,25 @@ Dynamic Programming
         Take the minimum of all possible results.
 
     5. Longest Common Subsequence: 
-    Important: Initialize 2D DP array with -1 since 0 could be a valid answer during TD code.
+        Important: Initialize 2D DP array with -1 since 0 could be a valid answer during TD code.
 
-    Objective is to find the maximum length of the common subsequence between two strings. In recursive or top down approach
-    initialize both the strings from i=0 and j=0 and check if the charcter at both the strings match. If it does then add 1
-    to the recursive call on the remaining both strings from i+1 and j+1. If they do not match at the current indices then
-    find the max of i+1 of the first string and j+1 of the second string and return it. In the base case if i or j reach end
-    of their respective strings then simply return 0. Please note during memoisation of TD Solution, Initialise the array with
-    -1 values as 0 can also be a valid answer.
+        Objective is to find the maximum length of the common subsequence between two strings. In recursive or top down approach
+        initialize both the strings from i=0 and j=0 and check if the charcter at both the strings match. If it does then add 1
+        to the recursive call on the remaining both strings from i+1 and j+1. If they do not match at the current indices then
+        find the max of i+1 of the first string and j+1 of the second string and return it. In the base case if i or j reach end
+        of their respective strings then simply return 0. Please note during memoisation of TD Solution, Initialise the array with
+        -1 values as 0 can also be a valid answer.
 
-    In the Bottom Up Approach create an array of s1.size()+1 and s2.size()+1 dimensions and the first row and column should
-    be initialised with 0 as i=0 and j=0 denote empty strings and act as base cases. Now traverse the 2d array from 1 based 
-    indexing and if the current charcter matches add 1 to the result stored in the left upper diagonal(i-1, j-1) and if they
-    do not match then store the maximum of the cells directly above and to the left max(dp(i-1, j) and dp(i, j-1)).
-    The final answer will be stored at the last index. 
+        In the Bottom Up Approach create an array of s1.size()+1 and s2.size()+1 dimensions and the first row and column should
+        be initialised with 0 as i=0 and j=0 denote empty strings and act as base cases. Now traverse the 2d array from 1 based 
+        indexing and if the current charcter matches add 1 to the result stored in the left upper diagonal(i-1, j-1) and if they
+        do not match then store the maximum of the cells directly above and to the left max(dp(i-1, j) and dp(i, j-1)).
+        The final answer will be stored at the last index. 
 
-    If we want to generate the string we must start tracing the array from the last index. If the value of the current index
-    matches with the one directly above then move the pointer to directly above and if the value matches to the index directly
-    on the left, move the pointer to left and if they don't then the current indices should match, add the character to the
-    output and move to i-1 and j-1.
+        If we want to generate the string we must start tracing the array from the last index. If the value of the current index
+        matches with the one directly above then move the pointer to directly above and if the value matches to the index directly
+        on the left, move the pointer to left and if they don't then the current indices should match, add the character to the
+        output and move to i-1 and j-1.
 
 
 Queues
