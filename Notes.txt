@@ -784,8 +784,144 @@ Recursion, Backtracking and Divide and Conquer
 
         III. Enumeration Problem: Find all possible solutions. e.g. Find all substrings or all permutations of a string.
 
-    1. 
+    13. Finding Subsets
 
+        Create a recursive function which takes in two strings as parameters, one the original string and other an empty
+        string which is the answer. Extract the first character and create the substring of the string starting from 1st
+        character. Make to calls to the recursive function, include the character in one of the answers of the two calls
+        which traslates to including and excluding the current character. Once the original string is empty, print out the
+        answer string which corresponds to one possible substring or subset.
+
+        Time Complexity : O(2 ^ n)
+        Space Complexity : O(n)
+
+    14. Permutations
+
+        Create a recursive function which takes in a string and an index starting from i = 0. For the recusrive case run a 
+        for loop from j=i to j lesser than string length. Swap the i and j characters and find the permutations for the rest
+        of the string. Once i is on the last index and only one character remains print the string and return. Now after 
+        the function returns to the original recursive call swap i and j again to reset the string.
+
+        Time Complexity : O(2 ^ n)
+        Space Complexity : O(n)
+
+    15. N Queen Problem
+
+        The problem comes in 2 flavors, one in which we have to find one possible solution and another in which we have to
+        find all possible solutions. Traverse the current row and check if the queen can be placed at the current index using
+        is_safe function which involved checking if a queen is already placed in some diagonal or current column. If it is safe
+        place the queen and call the function for the next row. If the program is successfull in finding a solution, return true
+        otherwise remove the queen from the current cell. If no position on the current row is possible return false from the
+        current recursive call. In the base case if i reaches n return true as a solution was successfully discovered. In the case
+        of count all ways, the function return type should be int and return 1 from the base case instead of true. For recursive
+        calls create a variable called ways = 0 and add the result of every recusrive call to ways and then return ways from
+        the solution.
+
+        Time Complexity : O(n^n) or tighter bound is O(n!)
+        Space Complexity : O(n)
+
+    16. Grid ways
+
+        Give an NXM grid and you at index 0,0 and you can move either right or down, find the number of ways to go from start
+        of the grid to the end of the grid. Create a function with i and j initialised to 0 and n and m and if i and j reach
+        n-1 and m-1 return 1 as it denotes one possible solution. If i exceeds n-1 or j exceeds m-1 return 0. For the recursive
+        case add f(i+1) and f(j+1).
+
+        Time Complexity : O(2 ^ (n+m))
+        Space Complexity : O(n + m)
+
+    17. Sudoku Solver
+
+        Give a n * n grid with partially filled numbers, solve the sudoku. Traverse the sudoku board using the recusrive functions
+        which take in row and col, if current cell is occupied move the the next by increasing col in recursive call. Once an
+        unfilled cell is encountered try filling all possible values from 1 to n using is_safe function which checks whether
+        the entire column, the entire row and the entire (n/3)X(n/3) submatrix does not contain the current number in question.
+        If it is safe put the number and check for the rest of the sudoku board. If a solution is possible return true. Otherwise
+        try placing the next number. If no solution is possible, reset the current cell and return false. For the base case if
+        i which represents row reaches n that means entire board was solved so return true. If j reaches n, go to the next row
+        with column as 0 using the same function.
+
+        Time Complexity : O(n ^ n*n)
+        Space Complexity : O(n*n)
+
+    19. Rat and Mice
+
+        Variation of rat in a maze where you have to return the visited array. So simply use a dfs routine along with a visited
+        array and and once the last cell is reached return true. Mark the current cell as visietd and for each cell try to move 
+        to its adjacent cells i.e if adjacent cells are unblocked and not visited. If one of those cells give a possible 
+        solution return true. Otherwise mark the cell as unvisited return false once outside the loop.
+
+        Time Complexity : O(n + m)
+        Space Complexity : O(n + m)
+
+    20. Word break problem
+
+        Find the number of ways the string can be partitioned such that all the words exist inside the dictionary. First add
+        all words of dictionary to an unordered set for faster access. Create a recursive function with two pointers i and j
+        with i marking the start of the substring and j marking the end of the substring. Check if the current substring
+        exists inside the set and if it does we can either include the current string or exclude it so sum up both the cases
+        in a gloabal variable called ways. If the word does not exist simply move the j pointer ahead which is the case where
+        we do not include the current word. In the base cases if j reaches the end of the string and i is equal to j return 1.
+        If j reaches the end of the string and i does not, return 0. 
+
+    21. Word Search Problem
+
+        Traverse the entire array and check if the current character is the first character if the word. If it is, run a dfs
+        routine starting from that cell and try to find the entire word. Make use of visited array to make sure no cell is 
+        visited twice. Once the last character of the word is found return true. In the main function if the dfs returns a true
+        then return a true, otherwise search the rest of the board. Once out of the double for loop return false.
+
+    22. Climbing Ladders
+
+        Starting from 0 index you can take either 1, 2 or 3 steps forward. Find the number of ways to reach the last step.
+        So f(n) can be defined as f(n) = f(n-1) + f(n-2) + f(n-3). As for the base cases if n is 0 return 1 and if n is < 0
+        return 0 as that is an invalid case.
+
+        Time Complexity : O(2 ^ 3)
+        Space Complexity :O(n)
+
+    23. Count Subset sum to X
+
+        Create a recursive function which takes in an array and the index. Include and exclude the current element in the
+        recursive calls by subtracting from target sum. Once you reach the end of array check if target is 0. If it is that
+        means one subset was found which sums up to X. So return 1. Add the results of both recursive calls.
+
+        Time Complexity : O(2 ^ n)
+        Space Complexity : O(n)
+
+    24. Generate Brackets
+
+        The objective is to generate balanced brackets. Create a recusrive function with n, open count and close count and
+        a string as the parameters. If open count is smaller than n, add an opening bracket to the string. If close count
+        is smaller than open count add a close bracket to the string. For the base case if string length is 2 * n print the
+        string and return. This method of controlling the branches is called branch pruning (Loki rings a bell).
+
+        Time Complexity : O(2 ^ n)
+        space Complexity : O(n)
+
+    25. Smart Keypad
+
+        First create a vector of strings representing the keypad with its corresponding strings. Now create a recusrsive
+        function and parse each character in the string converting it to its corresponding index. Now for every character
+        in the keypad mapped to that index, add that character to a string argument and call the rescursive function again
+        for the next index of the string. Once the string runs out print the string which is formed. 
+
+        Time Complexity : O(3 ^ n)
+        Space Complexity : O(n)
+
+    26. Game of Coins:
+
+        The objective is as follows, 2 players are playing the game of picking up coins. Both players can pick the coin
+        from extreme ends of the array. Find the max value that the first player picks up in order to win the game. Both
+        players play optmally. 
+        The recursive definition will work as follows:
+        If player pickes up the coin from left then pick_left = coins[l] + min(f(l+2, r), f(l, r-1)) and similarly
+        pick_right = coins[r] + min(f(l+1, r), f(l, r-2)). Then return max(pick_left, pick_right). We have to use
+        min function because we assume that when the second player plays his move, we will get the worst possible
+        result when the first player plays the third move. But we have to return max(pick_left, pick_right) as that is
+        something that first player can control.
+
+    
     
 
 
