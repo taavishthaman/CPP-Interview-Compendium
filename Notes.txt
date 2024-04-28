@@ -922,7 +922,26 @@ Recursion, Backtracking and Divide and Conquer
         something that first player can control.
 
     
-    
+Stacks, Queues, Deques
+
+    Deque is a special data structure. Its called a Doubly Ended Queue. We can perform insertions and deletions on the
+    both ends of the deque.
+    Insertion: push_front(), push_back()
+    Deletion: pop_front(), pop_back()
+    Get: front(), back()
+
+    1. First Non Repeating Letter in a running stream: 
+
+        We will use a queue whose first element will tell us about the first non repeating character and a hash table
+        which will act as a frequency map for each character encountered in the stream so far. Traverse the stream,
+        update the current character's frequency in the map and add it to the queue.
+        Now start removing elements from the queue whose frequency in the map is greater than 1. This means these
+        characters are not useful for us. Do so inside a loop and then check the state of the queue. If the queue is
+        empty print out a '-1' which denotes no character found which is non repeating otherwise print out the front
+        of the queue.
+
+        Space Complexity: O(n)
+        Time Complexity: O(n)
 
 
 
